@@ -22,7 +22,8 @@ class Solution
         list_node* addTwoNumbers(list_node* l1, list_node* l2);
         int addTwoNumbers(list_node* l1, list_node* l2, list_node* sum, int carry);
         void delete_list(list_node* head);
-        void delete_node(list_node*&head);
+        void delete_node(list_node** head);
+        bool delete_val(list_node* head,int val);
         void generate_list(list_node* &head, int size);
         int print_list(list_node* head);
         void reverse_list(list_node* &head);
@@ -49,13 +50,44 @@ void Solution::delete_list(list_node* head)
     delete head;
 }
 
-void Solution::delete_node(list_node*&head)
+void Solution::delete_node(list_node** head)
+{
+    if(*head == NULL)
+        return;
+    //doesn't work because the pointer needs to be caught
+//    list_node* temp = (*head) -> next;
+//    //*head =(*head) -> next;
+//    //temp->next = NULL;
+//    delete *head;
+//    *head = temp;
+    if(!(*head)->next)
+    {
+        //delete head because there is nothing next
+        delete *head;
+        return;
+    }
+    (*head)->val = (*head)->next->val; //copy value
+    list_node*temp = (*head)->next;
+    (*head)->next = (*head)->next->next;//update next pointer
+    temp->next = NULL;
+    delete temp;   
+}
+
+bool Solution::delete_val(list_node* head,int val)
 {
     if(!head)
-        return;
+        return 0;
     list_node* temp = head;
-    head = head -> next;
-    delete temp;
+    while(temp)
+    {
+        if(temp->val == val)
+        {
+            delete_node(&temp);
+            return 1;
+        }
+        temp = temp -> next;
+    }
+    return 0;
 }
 
 void Solution::generate_list(list_node* &head, int size)
@@ -139,6 +171,8 @@ int main()
     solution.print_list(solution.l2_head);
     list_node* test_recurse = NULL;
     solution.generate_list(test_recurse,3);
+    solution.print_list(test_recurse);
+    solution.delete_val(test_recurse, test_recurse->next->val);
     solution.print_list(test_recurse);
     solution.delete_list(test_recurse);
     return 0;
