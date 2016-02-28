@@ -22,6 +22,7 @@ class Solution
         list_node* addTwoNumbers(list_node* l1, list_node* l2);
         int addTwoNumbers(list_node* l1, list_node* l2, list_node* sum, int carry);
         void delete_list(list_node* head);
+        void delete_node(list_node*&head);
         void generate_list(list_node* &head, int size);
         int print_list(list_node* head);
         void reverse_list(list_node* &head);
@@ -46,6 +47,15 @@ void Solution::delete_list(list_node* head)
     delete_list(head->next);
     head->next = NULL;
     delete head;
+}
+
+void Solution::delete_node(list_node*&head)
+{
+    if(!head)
+        return;
+    list_node* temp = head;
+    head = head -> next;
+    delete temp;
 }
 
 void Solution::generate_list(list_node* &head, int size)
