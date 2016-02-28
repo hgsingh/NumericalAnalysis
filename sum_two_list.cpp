@@ -83,7 +83,6 @@ bool Solution::delete_val(list_node* head,int val)
         if(temp->val == val)
         {
             delete_node(&temp);
-            return 1;
         }
         temp = temp -> next;
     }
