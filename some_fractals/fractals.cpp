@@ -51,7 +51,7 @@ int recurse_triangles(vertex* point, const vertex &a, const vertex &b, const ver
     int x = rand() % 3 + 1; //returns 1 to 3
    
     
-    if(iteration == 100000)
+    if(iteration == 200000)
     {
         std::cout<<iteration<<std::endl;
         return iteration;
