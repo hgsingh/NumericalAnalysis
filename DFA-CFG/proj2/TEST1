@@ -1,0 +1,29 @@
+Script started on Fri 04 Dec 2015 03:00:43 AM PST
+]0;harsukh@singh: ~/proj2harsukh@singh:~/proj2$ python grammar.py 
+inputing :a#b
+success
+inputing :abababa
+fail
+inputing :aaabbb
+fail
+inputing :aaabbbb
+fail
+inputing :aaaabbb
+fail
+inputing :aa#bb
+success
+inputing :aaa#bb
+fail
+inputing :aaa#bbb
+success
+inputing :aa#bbb
+fail
+inputing :aaaaa
+fail
+inputing :bbbbbb
+fail
+inputing :   
+Not a valid string
+]0;harsukh@singh: ~/proj2harsukh@singh:~/proj2$ exit
+
+Script done on Fri 04 Dec 2015 03:00:53 AM PST

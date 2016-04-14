@@ -1,0 +1,6 @@
+/target
+/Cargo.lock
+*~
+*.o
+/monte-carlo*
+mc

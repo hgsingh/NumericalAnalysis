@@ -1,0 +1,10 @@
+{
+"_comment": ["Encoding of {a^nbb^n | n > 0} "],
+"nonterminals": ["S"],
+"terminals": ["a", "b"],
+"start": "S",
+"delta": {
+"S": {"b" : "S", "aSb" : "S"}
+},
+"strings": ["ab", "abababa", "aaabbb", "aabbb", "abb", "aabaa", "aaaa", "   "]
+}

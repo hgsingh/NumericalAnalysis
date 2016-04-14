@@ -1,0 +1,11 @@
+{
+"_comment": ["Encoding of {a^n#b^n | n > 0} "],
+"nonterminals": ["S", "X"],
+"terminals": ["a", "b", "#"],
+"start": "S",
+"delta": {
+"S": {"aXb" : "S"},
+"X": {"aXb":  "X", "#": "X"}
+},
+"strings": ["a#b", "abababa", "aaabbb", "aaabbbb", "aaaabbb", "aa#bb", "aaa#bb", "aaa#bbb", "aa#bbb", "aaaaa", "bbbbbb", "   "]
+}

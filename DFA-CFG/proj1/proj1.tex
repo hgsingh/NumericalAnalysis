@@ -1,0 +1,106 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings} % Required for insertion of code
+\usepackage{courier} % Required for the courier font
+\usepackage{mathtools}
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+\linespread{1.0}
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\today} % Top left header
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle} % Top center head
+\rhead{\hmwkAuthorName} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \protect\pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+\newcommand{\hmwkTitle}{Discussion For Project 1}
+\newcommand{\hmwkDueDate}{\todaysdate}
+\newcommand{\hmwkClass}{CS 311}
+\newcommand{\hmwkClassInstructor}{Daniel Leblanc}
+\newcommand{\hmwkAuthorName}{Harsukh Singh}
+
+\lstset { %
+    language=C,
+    backgroundcolor=\color{white}, % set backgroundcolor
+    basicstyle=\footnotesize,% basic font setting
+}
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+%\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][\arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemNameoutline form} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{showstringspaces=false
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\begin{document}
+
+\begin{homeworkProblem}
+\large{Encoding a DFA} \\
+
+\large{The DFA is encoded in a JSON file this was particularly done to increase the amount of structures that can be represented including array and the object key/value pairs. Further reading the JSON file is automated through the python JSON library. Test values can also be inserted into the JSON array to parse through the DFA. The JSON object format allows to describe the DFA transition function with much ease compared to other formats, for example describing it using other languages would make it difficult to read the file, involving more lines of code. Using the JSON object the key/value pairs abstract the process and are within the rules of the program. } 
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+\large{Reading the DFA}\\
+
+\large{The DFA is read through the python json library. They are read to their respective notation representing the DFA object. For example using the key, "states", all the states are read into the states array. Once the file containing the representation of the DFA is read in tests are made to compare the strings to the alphabet and parse the characters of the string through the transition (delta) function. } 
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+\large{Processing a String}\\
+
+\large{The string is processed through two main functions, the first function compares the string by parsing the characters to be compared against the alphabet, any discrepancies lead to the function returning a false '0' value which at that point the program will cease execution. The second function parses the characters in the string using the transition function. The state changes as the string is parsed through the transistion function. Once the final state is obtained it is compared to the list of final states according to the DFA. The designed DFA files are consist of, a DFA that recognizes all binary numbers that are multiples of 5 and have test cases that include empty strings, and other alphabets. The other DFA consists of all strings of consisting of an even number of zeros. Further more strings are checked to evaluate the DFA and the program itself. The comments in the program are consistent with the layout of the program. The functions described can be combined into one function however the division of the program provides consistency. The design decisions made were alphabets were limited to binary and that every state has a transition based on the alphabet, a complete DFA. This may not always be the case and may be adjusted for in the JSON file. These considerations were not taken into effect when testing however this does not limit the program, and should not break. }   
+\end{homeworkProblem}
+
+
+\end{document}

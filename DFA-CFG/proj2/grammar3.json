@@ -1,0 +1,13 @@
+{
+"_comment": ["Encoding of {a^i#b^i#c^k# | i = j, k > 0} "],
+"nonterminals": ["S", "A", "B", "C"],
+"terminals": ["a", "b", "c", "#"],
+"start": "S",
+"delta": {
+"S": {"aAbB" : "S"},
+"A": {"aAb":"A","#":"A"},
+"B": {"#cC":"C"},
+"C": {"cC": "C", "#":"C"}
+},
+"strings": ["a#b#c#", "abc#a#ba#bca", "aaa#bbb#cc#", "aaa#bbbb#c#", "aa#bb#c", "###", "   "]
+}
